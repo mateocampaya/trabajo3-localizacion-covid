@@ -33,14 +33,17 @@ public class Poblacion {
 			lista.add(persona);
 		} 
 	}
-	
+
+
+
+	 /*
+	Busca la persona por documento, en caso de encontrarla
+	devuelve la posición dentro de la lista, sino está lanza
+	una excepción
+
 	public void delPersona(String documento) throws EmsPersonNotFoundException {
 		int pos=-1;
-		/**
-		 * Busca la persona por documento, en caso de encontrarla
-		 * devuelve la posición dentro de la lista, sino está lanza
-		 * una excepción
-		 */
+
 		try {
 			pos = findPersona(documento);
 		} catch (EmsPersonNotFoundException e) {
@@ -48,6 +51,7 @@ public class Poblacion {
 		}
 		lista.remove(pos);		
 	}
+	*/
 	
 	public int findPersona (String documento) throws EmsPersonNotFoundException {
 		int cont=0;
@@ -61,7 +65,8 @@ public class Poblacion {
 		}		
 		throw new EmsPersonNotFoundException();
 	}
-	
+
+	/*
 	public void printPoblacion() {   
 		 
 	    for(int i = 0; i < lista.size(); i++) {	    	
@@ -80,24 +85,13 @@ public class Poblacion {
 	         fecha.getFecha().getAnio());	        
 	    }
 	}
+	 */
 
 	@Override
 	public String toString() {
 		String cadena = "";
 		for(int i = 0; i < lista.size(); i++) {
-			FechaHora fecha = lista.get(i).getFechaNacimiento();
-	        // Documento	    	    	
-	        cadena+=String.format("%s;", lista.get(i).getDocumento());
-	        // nombre y apellidos	              
-	        cadena+=String.format("%s,%s;",lista.get(i).getApellidos(), lista.get(i).getNombre());	        
-	        // correo electrónico
-	        cadena+=String.format("%s;", lista.get(i).getEmail());
-	        // Direccion y código postal
-	        cadena+=String.format("%s,%s;", lista.get(i).getDireccion(), lista.get(i).getCp());	        
-	        // Fecha de nacimiento
-	        cadena+=String.format("%02d/%02d/%04d\n", fecha.getFecha().getDia(), 
-	        		fecha.getFecha().getMes(), 
-	        		fecha.getFecha().getAnio());
+			cadena += lista.get(i).toString();
 		}
 		return cadena;
 	}
